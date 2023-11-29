@@ -4,9 +4,12 @@ namespace tmuehlemann\craftfeatureflags;
 
 use Craft;
 use craft\base\Plugin;
+use craft\web\twig\variables\CraftVariable;
 use tmuehlemann\craftfeatureflags\helpers\Config;
 use tmuehlemann\craftfeatureflags\helpers\PluginConfig;
 use tmuehlemann\craftfeatureflags\services\FeatureFlagsService;
+use tmuehlemann\craftfeatureflags\variables\FeatureFlagsVariable;
+use yii\base\Event;
 
 /**
  * feature-flags plugin
@@ -46,9 +49,21 @@ class FeatureFlags extends Plugin
         });
     }
 
+        // Register our variable
     private function attachEventHandlers(): void
     {
-        // Register event handlers here ...
-        // (see https://craftcms.com/docs/4.x/extend/events.html to get started)
+
+        Event::on(
+            CraftVariable::class,
+            CraftVariable::EVENT_INIT,
+            function (Event $event) {
+                /** @var CraftVariable $variable */
+                $variable = $event->sender;
+                $variable->set('ff', [
+                    'class' => FeatureFlagsVariable::class,
+                    'featureFlagsService' => $this->featureflags,
+                ]);
+            }
+        );
     }
 }

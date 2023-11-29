@@ -1,6 +1,6 @@
 # Feature Flags
 
-Feature flag integration for your Craft Project.
+Gitlab feature flag integration for your Craft Project.
 
 ## Compatability
 Uses the [Unleash protocol](https://www.getunleash.io/) which is used by:
@@ -35,14 +35,16 @@ composer require tmuehlemann/craft-feature-flags
 
 ## Configuration
 Add a `featureflags.php` file to your `config` directory.
+
+You can copy the configurations values from gitlab directly into here.
 ```php
 <?php
 
 use craft\helpers\App;
 
 return [
-    'url' => App::env('FEATURE_FLAGS_URL'),
-    'instance_id' => App::env('FEATURE_FLAGS_INSTANCE_ID'),
+    'url' => '',
+    'instance_id' => '',
     'app_name' => App::env('CRAFT_ENVIRONMENT'),
 ];
 ```
