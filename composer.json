@@ -1,0 +1,52 @@
+{
+    "name": "tmuehlemann/craft-feature-flags",
+    "description": "Feature flag integration for your Craft project",
+    "type": "craft-plugin",
+    "license": "mit",
+    "support": {
+        "email": "thierry.sh@pm.me",
+        "issues": "https://github.com/tmuehlemann/craft-feature-flags/issues?state=open",
+        "source": "https://github.com/tmuehlemann/craft-feature-flags",
+        "docs": "https://github.com/tmuehlemann/craft-feature-flags",
+        "rss": "https://github.com/tmuehlemann/craft-feature-flags/releases.atom"
+    },
+    "require": {
+        "php": ">=8.0.2",
+        "craftcms/cms": "^4.5.0",
+        "guzzlehttp/guzzle": "^7.8",
+        "symfony/cache": "^6.0",
+        "unleash/client": "^2.2"
+    },
+    "require-dev": {
+        "craftcms/ecs": "dev-main",
+        "craftcms/phpstan": "dev-main"
+    },
+    "autoload": {
+        "psr-4": {
+            "tmuehlemann\\craftfeatureflags\\": "src/"
+        }
+    },
+    "extra": {
+        "handle": "feature-flags",
+        "name": "feature-flags",
+        "developer": "tmuehlemann",
+        "documentationUrl": "https://github.com/tmuehlemann/craft-feature-flags",
+        "class": "tmuehlemann\\craftfeatureflags\\FeatureFlags"
+    },
+    "scripts": {
+        "check-cs": "ecs check --ansi",
+        "fix-cs": "ecs check --ansi --fix",
+        "phpstan": "phpstan --memory-limit=1G"
+    },
+    "config": {
+        "sort-packages": true,
+        "platform": {
+            "php": "8.0.2"
+        },
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true,
+            "craftcms/plugin-installer": true,
+            "php-http/discovery": true
+        }
+    }
+}
