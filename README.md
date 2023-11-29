@@ -32,3 +32,17 @@ composer require tmuehlemann/craft-feature-flags
 # tell Craft to install the plugin
 ./craft plugin/install feature-flags
 ```
+
+## Configuration
+Add a `featureflags.php` file to your `config` directory.
+```php
+<?php
+
+use craft\helpers\App;
+
+return [
+    'url' => App::env('FEATURE_FLAGS_URL'),
+    'instance_id' => App::env('FEATURE_FLAGS_INSTANCE_ID'),
+    'app_name' => App::env('CRAFT_ENVIRONMENT'),
+];
+```
